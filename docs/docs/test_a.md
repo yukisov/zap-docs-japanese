@@ -6,7 +6,7 @@ aaa
 
 [bbb](test_b.md)
 
-[baz](#baz)
+[baz](test_a.md#baz)
 
 bar
 ---
