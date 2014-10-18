@@ -4,4 +4,4 @@ Test A
 aaa
 ---
 
-[bbb](../test_b/)
+[bbb](test_b)
