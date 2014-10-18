@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: Yuki's ZAP docs
+pages:
+- [test_a.md, Test Page A]
+- [test_b.md, Test Page B]
+theme: readthedocs
