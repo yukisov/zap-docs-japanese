@@ -4,4 +4,4 @@ pages:
 - [api.md, API]
 - [test_a.md, Test Page A]
 - [test_b.md, Test Page B]
-theme: readthedocs
+theme: cerulean
