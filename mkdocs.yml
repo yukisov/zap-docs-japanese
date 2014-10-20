@@ -1,5 +1,5 @@
 site_name: Yuki's ZAP docs
-theme: cerulean
+theme: flatly
 site_dir: gh-pages
 pages:
 - [index.md, Home]
