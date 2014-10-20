@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-        <title>API - Yuki's ZAP docs</title>
+        <title>API - OWASP ZAP Tips by yuki</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -41,7 +41,7 @@
             </button>
 
             <!-- Main title -->
-            <a class="navbar-brand" href="..">Yuki's ZAP docs</a>
+            <a class="navbar-brand" href="..">OWASP ZAP Tips by yuki</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -63,13 +63,7 @@
             
             
                 <li >
-                    <a href="../test_a/">Test Page A</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../test_b/">Test Page B</a>
+                    <a href="../mkdocs/">About MkDocs</a>
                 </li>
             
             
@@ -84,7 +78,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../test_a/">
+                    <a rel="prev" href="../mkdocs/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -100,7 +94,9 @@
     
         <li class="main active"><a href="#api">API</a></li>
         
-            <li><a href="#component-core">Component: core</a></li>
+            <li><a href="#core">core コンポーネント</a></li>
+        
+            <li><a href="#authentication">authentication コンポーネント</a></li>
         
     
     </ul>
@@ -108,31 +104,55 @@
             <div class="col-md-9" role="main">
 
 <h1 id="api">API</h1>
-<h2 id="component-core">Component: core</h2>
+<h2 id="core">core コンポーネント</h2>
 <h3 id="action">Action</h3>
 <h4 id="savesession">saveSession</h4>
-<h5 id="1-apikey">パラメータ1: apikey</h5>
-<h5 id="2-name">パラメータ2: name：</h5>
+<h5 id="1-apikey42">パラメータ1: apikey*</h5>
+<h5 id="2-name42">パラメータ2: name*</h5>
 <ul>
 <li>セッションを保存するディレクトリへの絶対パス + 保存するファイルの接頭文字列</li>
-<li>（例）"/Users/yuki/tmp/zap_session_save_test/foo" を渡すと、/Users/yuki/tmp/zap_session_save_test/ 内に、以下のファイルとディレクトリが生成される。<ul>
-<li>foo.session</li>
-<li>foo.session.data</li>
-<li>foo.session.lck</li>
-<li>foo.session.log</li>
-<li>foo.session.properties</li>
-<li>foo.session.script</li>
-<li>foo.session.tmp/</li>
+<li>（例）<code>/Users/yuki/tmp/zap_session_save_test/foo</code> を渡すと、<code>/Users/yuki/tmp/zap_session_save_test/</code> 内に、以下のファイルとディレクトリが生成される。<ul>
+<li><code>foo.session</code></li>
+<li><code>foo.session.data</code></li>
+<li><code>foo.session.lck</code></li>
+<li><code>foo.session.log</code></li>
+<li><code>foo.session.properties</code></li>
+<li><code>foo.session.script</code></li>
+<li><code>foo.session.tmp/</code></li>
 </ul>
 </li>
 </ul>
 <h5 id="3-overwrite">パラメータ3: overwrite</h5>
 <ul>
-<li>"true" or "false"</li>
+<li><code>"true"</code> or <code>"false"</code></li>
 </ul>
-<h5 id="_1">戻り値:</h5>
+<h5 id="json">戻り値 [JSON]:</h5>
 <ul>
-<li>成功時：{"Result":"OK"}</li>
+<li>成功時：<code>{"Result":"OK"}</code></li>
+</ul>
+<h2 id="authentication">authentication コンポーネント</h2>
+<h3 id="action_1">Action</h3>
+<h4 id="setauthenticationmethod">setAuthenticationMethod</h4>
+<h5 id="1-apikey42_1">パラメータ1: apikey*</h5>
+<h5 id="2-contextid42">パラメータ2: contextId*</h5>
+<h5 id="3-authmethodname42">パラメータ3: authMethodName*</h5>
+<h5 id="4-authmethodconfigparams">パラメータ4: authMethodConfigParams</h5>
+<ul>
+<li>key1=value1&amp;key2=value2&amp;... の形式で複数のパラメータとその値をセットする。</li>
+<li>Form-based Authentication の場合は、以下のパラメータをひとまとめにしてこのフィールドにセットする。<ul>
+<li><code>loginUrl</code></li>
+<li><code>loginRequestData</code><ul>
+<li>これはPOSTリクエストでで渡すデータである。</li>
+<li>ユーザ名の文字列部分は、<code>"{%username%}"</code>、パスワードの文字列部分は、<code>"{%password%}"</code> にしないといけない。</li>
+<li>CSRF対策トークンも渡した方がよさそう。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>このあたりのことが定義されているファイル<ul>
+<li><code>org.zaproxy.zap.authentication.FormBasedAuthenticationMethodType</code></li>
+</ul>
+</li>
 </ul>
 </div>
         </div>
