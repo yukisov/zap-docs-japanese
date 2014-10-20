@@ -1,7 +1,8 @@
 site_name: Yuki's ZAP docs
+theme: cerulean
+site_dir: gh-pages
 pages:
 - [index.md, Home]
 - [api.md, API]
 - [test_a.md, Test Page A]
 - [test_b.md, Test Page B]
-theme: cerulean
